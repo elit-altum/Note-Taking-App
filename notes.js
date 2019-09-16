@@ -93,10 +93,32 @@ const readNote = function(title) {
       }
 }
 
+const appendNote = (title, body) => {
+      let check = 0;
+
+      const notes = loadNotes();
+      notes.forEach( (e) => {
+            if(e.title === title){
+                  e.body = e.body + ', ' + body;
+                  check = 1;
+                  return;     //Breaks the forEach() loop #break; statement doesn't work with forEach
+            }
+      });
+
+      if(check) {
+            saveNotes(notes);
+            console.log(chalk.green('Task added successfully'));
+      } else {
+            console.log(chalk.red('No notes found.'));
+      }
+
+}
+
 
 module.exports = { //exports multiple properties/methods as an object
       addNote: addNote,
       removeNote: removeNote,
       listNotes: listNotes,
       readNote: readNote,
+      appendNote: appendNote,
 }
