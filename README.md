@@ -5,12 +5,12 @@ A command line run app for adding/removing/listing notes. Made using NodeJS
 - Use the 'add' command along with '--title=' and '--body=' flags for adding the note.
 - Both flags are compulsory
 - Cannot add notes with same title
-- node app.js add --title"Note title" --body="Note body"
+- node app.js add --title="Note title" --body="Note body"
 
 ### Remove a note
 - Use the 'remove' command along with '--title=' for removing the note.
 - Compulsory flag
-- node app.js remove --title"Note title"
+- node app.js remove --title="Note title"
 
 ### Listing a node
 - Use 'list' command to list out all the notes on the terminal
@@ -18,6 +18,6 @@ A command line run app for adding/removing/listing notes. Made using NodeJS
 
 ### Reading a note
 - Use 'read' command along with '--title=' flag for reading a particular note
-- node app.js read --title"Note title"
+- node app.js read --title="Note title"
 
 
