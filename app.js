@@ -70,5 +70,27 @@ yargs.command({
       }
 })
 
+//Create append command
+yargs.command({
+      command:'append',
+      describe: 'Add more tasks to note',
+      builder: {
+            title: {
+                  describe: 'Note title',
+                  demandOption: true,
+                  type: 'string',
+            },
+
+            body: {
+                  describe: 'Tasks to add',
+                  demandOption: true,
+                  type: 'string',
+            }
+      },
+      handler: function(argv) {
+            notes.appendNote(argv.title, argv.body);
+      }
+})
+
 //Very important as this is the function which runs yargs parsing. Remove it or change it's position and yargs doesn't work
 yargs.parse();
