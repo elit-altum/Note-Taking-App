@@ -59,7 +59,13 @@ const listNotes = function() {
 
             notes.forEach( (note, index) => {
                   console.log(chalk.yellow(index + 1) + chalk.yellow('. Title: ') + note.title);
-                  console.log(chalk.yellow('   Body: ') + note.body + "\n");
+                  console.log(chalk.yellow('   Body: '));
+
+                  var toDo = note.body.split(','); //Separates individual tasks and saves in array
+                  toDo.forEach( (e) => {  //Prints each task seperately
+                        console.log("     -" + e.trim() + " ");
+                  });
+                  console.log("\n");
             });
 
       } else {
@@ -73,7 +79,15 @@ const readNote = function(title) {
 
       if(foundNote){
             console.log(chalk.yellow('Title: ') + foundNote.title);
-            console.log(chalk.yellow('Body: ') + foundNote.body + "\n");
+            console.log(chalk.yellow('Body: '));
+
+            var tasks = foundNote.body.split(',');
+            tasks.forEach((e) => {
+                  console.log("   -" + e.trim() + " ");
+            });
+            
+            console.log("\n");
+
       } else {
             console.log(chalk.red('No notes found.'));
       }
