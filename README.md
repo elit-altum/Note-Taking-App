@@ -1,5 +1,5 @@
 # Note-Taking-App
-- A command line run app for adding/removing/listing notes. Made using NodeJS and ES6.
+- A command line run app for adding/removing/listing notes. Made using NodeJS and written in ES6.
 - Use 'npm install' to install all dependencies before running the app.js file.
 
 ### Adding a note
