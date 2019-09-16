@@ -21,4 +21,9 @@
 - Use 'read' command along with '--title=' flag for reading a particular note
 - node app.js read --title="Note title"
 
+### Appending to a note
+- Use 'append' command along with '--title=' and '--body=' flags for adding tasks to an existing note.
+- node app.js append --title="Note title" --body="New tasks"
+
+
 
