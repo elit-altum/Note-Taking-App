@@ -6,7 +6,7 @@
 - Use the 'add' command along with '--title=' and '--body=' flags for adding the note.
 - Both flags are compulsory
 - Cannot add notes with same title
-- node app.js add --title="Note title" --body="Note body"
+- node app.js add --title="Note title" --body="task 1, task 2,.."
 
 ### Remove a note
 - Use the 'remove' command along with '--title=' for removing the note.
@@ -23,7 +23,7 @@
 
 ### Appending to a note
 - Use 'append' command along with '--title=' and '--body=' flags for adding tasks to an existing note.
-- node app.js append --title="Note title" --body="New tasks"
+- node app.js append --title="Note title" --body="task 3, task 4,.."
 
 
 
