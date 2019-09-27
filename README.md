@@ -13,7 +13,7 @@
 - Compulsory flag
 - node app.js remove --title="Note title"
 
-### Listing a node
+### Listing all notes
 - Use 'list' command to list out all the notes on the terminal
 - node app.js list
 
