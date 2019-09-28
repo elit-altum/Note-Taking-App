@@ -62,9 +62,11 @@ const listNotes = function() {
                   console.log(chalk.yellow('   Body: '));
 
                   var toDo = note.body.split(','); //Separates individual tasks and saves in array
+                  
                   toDo.forEach( (e) => {  //Prints each task seperately
-                        console.log("     -" + e.trim() + " ");
-                  });
+                        if(e.trim() != ' ' && e.trim() != '')
+                              console.log("     -" + e.trim());
+                  });   
                   console.log("\n");
             });
 
