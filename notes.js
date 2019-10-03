@@ -1,6 +1,12 @@
 const fs = require('fs');
 const chalk = require('chalk')
 
+let sanitizeData = (body) => {
+      let individual = body.split(',');
+      let sanitised = individual.filter((e) => e.trim() != '');
+
+      return sanitised;
+}
 
 const loadNotes = () => { //Gets all notes from .json file as JS object
       try {
@@ -22,10 +28,19 @@ const addNote = (title, body) => {   //final function to add notes
       //Returns first duplicate value and stops iterating when found 
       const duplicateNote = notes.find( (note) => note.title === title );
 
+      //Sanitising the body
+      let sanitisedBody = '';
+      let input = sanitizeData(body);
+
+      input.forEach( (e) => {
+            sanitisedBody = sanitisedBody + e + ',';
+      })
+
+      //Adding note to the list
       if(!duplicateNote) { //if no duplicates
             notes.push({      //appends the new note object at the end of the notes array
                   title: title,
-                  body: body,
+                  body: sanitisedBody,
             })
             saveNotes(notes); 
             console.log(chalk.green('New note added!'));
@@ -64,7 +79,7 @@ const listNotes = function() {
                   var toDo = note.body.split(','); //Separates individual tasks and saves in array
                   
                   toDo.forEach( (e) => {  //Prints each task seperately
-                        if(e.trim() != ' ' && e.trim() != '')
+                        if(e.trim() != '')
                               console.log("     -" + e.trim());
                   });   
                   console.log("\n");
@@ -98,10 +113,14 @@ const readNote = function(title) {
 const appendNote = (title, body) => {
       let check = 0;
 
+      let inputString = sanitizeData(body);
       const notes = loadNotes();
+
       notes.forEach( (e) => {
             if(e.title === title){
-                  e.body = e.body + ', ' + body;
+                  inputString.forEach( (text) => {
+                        e.body = e.body + text + ',';
+                  });
                   check = 1;
                   return;     //Breaks the forEach() loop #break; statement doesn't work with forEach
             }
@@ -118,9 +137,9 @@ const appendNote = (title, body) => {
 
 
 module.exports = { //exports multiple properties/methods as an object
-      addNote: addNote,
-      removeNote: removeNote,
-      listNotes: listNotes,
-      readNote: readNote,
-      appendNote: appendNote,
+      addNote,
+      removeNote,
+      listNotes,
+      readNote,
+      appendNote,
 }
